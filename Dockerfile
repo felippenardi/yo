@@ -2,6 +2,7 @@
 FROM ubuntu:13.10
 
 RUN apt-get update
+RUN apt-get install -y git
 RUN apt-get install -y wget
 
 # Define volume that will be mounted
