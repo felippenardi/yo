@@ -5,6 +5,11 @@ RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y wget
 
+# ruby (sass/compass)
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ruby2.0
+RUN gem install sass
+RUN gem install compass
+
 # Define volume that will be mounted
 VOLUME ["/src"]
 
@@ -30,5 +35,9 @@ WORKDIR   /src
 # Install NPM dependencies
 RUN npm install -g yo
 RUN npm install -g generator-angular
+RUN npm install -g karma
+RUN npm install -g bower
+RUN npm install -g grunt-cli
+RUN npm dedupe
 
 CMD /bin/bash
