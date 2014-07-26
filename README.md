@@ -1,4 +1,5 @@
 # Yeoman Dockerfile
+## Generating files as non-root
 
 This Docker image gets you ready to go with Yeoman the right way: all generated files are NOT owned by root, so you can edit them outside the docker.
 
