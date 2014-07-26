@@ -18,4 +18,4 @@ It will attach the current directory as a volume (`/src/`) so any changes made b
 
 ### Usage
 
-    docker run -i -t felippenardi/yo
+    docker run -i -t --rm -v `pwd`:/src felippenardi/yo
