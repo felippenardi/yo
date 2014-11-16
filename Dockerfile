@@ -4,6 +4,7 @@ FROM ubuntu:13.10
 RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y wget
+RUN apt-get install -y build-essential
 
 # required for phantomjs
 RUN apt-get install -y bzip2
@@ -12,8 +13,17 @@ RUN apt-get install -y fontconfig
 
 # ruby (sass/compass)
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ruby2.0
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ruby2.0-dev
 RUN gem install sass
 RUN gem install compass
+
+# required for selenium webdriver-manage
+RUN apt-get install -y python-software-properties
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:webupd8team/java
+RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+RUN apt-get update && apt-get clean
+RUN apt-get install -y oracle-java8-installer
 
 # Define volume that will be mounted
 VOLUME ["/src"]
@@ -45,7 +55,11 @@ RUN npm install -g grunt-cli
 RUN npm install -g karma
 RUN npm install -g grunt-karma
 RUN npm install -g phantomjs
+RUN npm install -g casperjs
 RUN npm install -g karma-phantomjs-launcher
+RUN npm install -g protractor
+RUN npm install -g browserstack-webdriver
+RUN webdriver-manager update
 RUN npm dedupe
 
 CMD /bin/bash
