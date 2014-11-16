@@ -59,6 +59,7 @@ RUN npm install -g casperjs
 RUN npm install -g karma-phantomjs-launcher
 RUN npm install -g protractor
 RUN npm install -g browserstack-webdriver
+RUN npm install -g lineman
 RUN webdriver-manager update
 RUN npm dedupe
 
