@@ -1,21 +1,14 @@
 # DOCKER-VERSION 0.10.0
-FROM ubuntu:13.10
+FROM ubuntu:14.04
 
-RUN apt-get update
-RUN apt-get install -y git
-RUN apt-get install -y wget
-RUN apt-get install -y build-essential
+RUN apt-get update && \
+    apt-get install -y sudo curl openssh-client ruby git wget build-essential \
+    subversion postgresql postgresql-contrib
 
 # required for phantomjs
 RUN apt-get install -y bzip2
 RUN apt-get install -y freetype*
 RUN apt-get install -y fontconfig
-
-# ruby (sass/compass)
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ruby2.0
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ruby2.0-dev
-RUN gem install sass
-RUN gem install compass
 
 # required for selenium webdriver-manage
 RUN apt-get install -y python-software-properties
