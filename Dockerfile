@@ -23,13 +23,9 @@ VOLUME ["/src"]
 
 # Install Node
 RUN   \
-  cd /opt && \
-  wget http://nodejs.org/dist/v0.10.28/node-v0.10.28-linux-x64.tar.gz && \
-  tar -xzf node-v0.10.28-linux-x64.tar.gz && \
-  mv node-v0.10.28-linux-x64 node && \
-  cd /usr/local/bin && \
-  ln -s /opt/node/bin/* . && \
-  rm -f /opt/node-v0.10.28-linux-x64.tar.gz
+  wget -O - http://nodejs.org/dist/v0.10.29/node-v0.10.29-linux-x64.tar.gz \
+  | tar xzf - --strip-components=1 --exclude="README.md" --exclude="LICENSE" \
+  --exclude="ChangeLog" -C "/usr/local"
 
 # Make Docker use a nonroot user
 RUN useradd -ms /bin/bash node
