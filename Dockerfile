@@ -31,6 +31,14 @@ RUN   \
 RUN useradd -ms /bin/bash node
 RUN chown -R node:node /src /opt /usr
 ENV HOME /home/node
+
+# Install Heroku toolbelt
+#RUN wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+RUN echo "deb http://toolbelt.heroku.com/ubuntu ./" > /etc/apt/sources.list.d/heroku.list
+RUN wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
+RUN apt-get update
+RUN apt-get install -y heroku-toolbelt
+
 USER node
 
 # Set the working directory
