@@ -49,6 +49,7 @@ WORKDIR   /src
 
 # Install NPM dependencies
 RUN npm install -g yo
+RUN npm install -g redis
 RUN npm install -g generator-angular
 RUN npm install -g bower
 RUN npm install -g grunt-cli
