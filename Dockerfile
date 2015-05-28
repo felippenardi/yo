@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 
 RUN apt-get update && \
     apt-get install -y sudo curl openssh-client ruby git wget build-essential \
-    subversion postgresql postgresql-contrib
+    subversion postgresql postgresql-contrib xvfb
 
 # required for phantomjs
 RUN apt-get install -y bzip2
