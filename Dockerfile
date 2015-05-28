@@ -18,6 +18,9 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 RUN apt-get update && apt-get clean
 RUN apt-get install -y oracle-java8-installer
 
+# Install utilitary to watch file changes and run command
+RUN gem install filewatcher
+
 # Define volume that will be mounted
 VOLUME ["/src"]
 
