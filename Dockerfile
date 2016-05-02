@@ -26,7 +26,7 @@ VOLUME ["/src"]
 
 # Install Node
 RUN   \
-  wget -O - http://nodejs.org/dist/v0.10.29/node-v0.10.29-linux-x64.tar.gz \
+  wget -O - http://nodejs.org/dist/v6.0.0/node-v6.0.0-linux-x64.tar.gz \
   | tar xzf - --strip-components=1 --exclude="README.md" --exclude="LICENSE" \
   --exclude="ChangeLog" -C "/usr/local"
 
